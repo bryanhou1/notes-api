@@ -12,10 +12,10 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
-
+		@user = User.find(params[:id])
+    @user.destroy
+    render json: { head :no_content }
 	end
-
-
 
 	def update
 		@user = User.find(params[:id])
