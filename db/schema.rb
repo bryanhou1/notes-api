@@ -10,7 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171220004821) do
+ActiveRecord::Schema.define(version: 20171220052840) do
+
+  create_table "pictures", force: :cascade do |t|
+    t.string "description"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_pictures_on_user_id"
+  end
+
+  create_table "pictures_posts", id: false, force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "picture_id", null: false
+    t.index ["picture_id", "post_id"], name: "index_pictures_posts_on_picture_id_and_post_id"
+    t.index ["post_id", "picture_id"], name: "index_pictures_posts_on_post_id_and_picture_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "password_digest"
