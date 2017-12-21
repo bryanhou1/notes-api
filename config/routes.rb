@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 		resources 'users', except: :create
 
 		post 'signup' => 'user#create'
-  	post 'signin' => 'sessions#create'
   end
 
   
