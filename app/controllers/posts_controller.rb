@@ -1,17 +1,17 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :update, :destroy]
-  # before_action :authenticate_user, except: :create
+  before_action :set_post, only: [:update, :destroy]
+  # before_action :authenticate_user
+  # authorization needs to be built as well
 
   # GET /posts
   def index
-    @posts = Post.all
+    if params[:user_id]
+      @posts = Post.where(user_id: params[:user_id])
+    else
+      @posts = Post.all
+    end
 
     render json: @posts
-  end
-
-  # GET /posts/1
-  def show
-    render json: @post
   end
 
   # POST /posts
