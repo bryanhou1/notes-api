@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 			resources 'posts', except: :edit
 		end
 
-		resources 'posts' except: :edit
+		resources 'posts', except: :edit
 		post 'signup' => 'user#create'
   end
 
