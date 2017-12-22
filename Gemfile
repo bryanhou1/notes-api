@@ -5,7 +5,13 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'pry'
+# Shrine Dependencies
+gem 'fastimage'
+gem 'image_processing'
+gem 'mini_magick'
+gem 'shrine'
+
+#AMS
 gem 'active_model_serializers'
 #JWT auth
 gem 'knock'
@@ -31,9 +37,11 @@ gem 'bcrypt', '~> 3.1.7'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+	gem 'pry'
 end
 
 group :development do
+
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
