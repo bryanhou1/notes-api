@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 20171220052840) do
 
   create_table "pictures", force: :cascade do |t|
     t.string "description"
-    t.string "url"
+    t.text "image_data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
