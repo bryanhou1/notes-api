@@ -11,6 +11,12 @@ gem 'image_processing'
 gem 'mini_magick'
 gem 'shrine'
 
+#AWS to store image assets
+gem 'aws-sdk-s3'
+
+#dotenv
+gem 'dotenv-rails', groups: [:development, :test]
+
 #AMS
 gem 'active_model_serializers'
 #JWT auth
