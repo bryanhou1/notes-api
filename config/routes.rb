@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 		end
 
 		resources 'posts', except: :edit
-		post 'signup' => 'user#create'
+		post 'signup' => 'users#create'
+		get 'current_user' => 'users#show_current'
   end
 
   
