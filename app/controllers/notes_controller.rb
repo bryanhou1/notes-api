@@ -11,7 +11,7 @@ class NotesController < ApplicationController
     #   @notes = Note.all
     # end
     @notes = Note.where(user: current_user)
-    render json: @notes, status: :OK
+    render json: @notes, status: 200
   end
 
   # POST /notes
