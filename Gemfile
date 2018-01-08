@@ -5,15 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-# Shrine Dependencies
-gem 'fastimage'
-gem 'image_processing'
-gem 'mini_magick'
-gem 'shrine'
-
-#AWS to store image assets
-gem 'aws-sdk-s3'
-
 #dotenv
 gem 'dotenv-rails', groups: [:development, :test]
 
