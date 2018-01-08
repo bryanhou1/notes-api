@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   scope '/api' do
 		post 'user_token' => 'user_token#create'
-		resources 'users', except: [:create, :edit] do
-			resources 'notes', except: [:edit, :create]
-		end
 
-		resources 'notes', except: :edit
-		post 'signup' => 'users#create'
-		get 'current_user' => 'users#show_current'
+    get 'current_user' => 'users#show_current'
+    post 'signup' => 'users#create'
+
+		resources 'users', only: [:destroy, :update]
+		resources 'notes', only: [:index, :create, :update, :destroy]
+
   end
 
   
