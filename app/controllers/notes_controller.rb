@@ -10,9 +10,8 @@ class NotesController < ApplicationController
     # else
     #   @notes = Note.all
     # end
-
     @notes = Note.where(user: current_user)
-    render json: @notes
+    render json: @notes, status: :OK
   end
 
   # POST /notes
@@ -40,7 +39,7 @@ class NotesController < ApplicationController
     if @note.user == current_user
       @note.destroy
     else
-      
+
       # render json: @note.errors, status: 422
     end
   end
