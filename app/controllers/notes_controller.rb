@@ -4,7 +4,7 @@ class NotesController < ApplicationController
 
   # GET /notes
   def index
-    @notes = Note.where(user: current_user)
+    @notes = Note.where(user: current_user).order(updated_at: :DESC)
     render json: @notes, status: 200
   end
 
