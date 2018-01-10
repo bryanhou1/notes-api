@@ -27,11 +27,11 @@ class NotesController < ApplicationController
 
   # PATCH/PUT /notes/1
   def update
-    # if @note.update(note_params)
-    #   render json: @note
-    # else
-    #   render json: @note.errors, status: 422
-    # end
+    if @note.update_attributes(note_params)
+      render json: @note.updated_at, status: 200
+    else
+      render json: @note.errors, status: 422
+    end
   end
 
   # DELETE /notes/1
@@ -52,6 +52,6 @@ class NotesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def note_params
-      params.fetch(:note, {})
+      params.permit(:title, :starred, :text)
     end
 end

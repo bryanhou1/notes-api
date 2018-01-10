@@ -1,5 +1,7 @@
 class NoteSerializer < ActiveModel::Serializer
-  attributes :id, :text, :title, :starred, :user_id
+  attributes :id, :text, :title, :starred, :last_updated
 
-  # has_many :pictures
+  def last_updated
+    object.updated_at.strftime("%F %T")
+  end
 end
