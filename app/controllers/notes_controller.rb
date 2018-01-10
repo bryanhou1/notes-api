@@ -28,7 +28,7 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1
   def update
     if @note.update_attributes(note_params)
-      render json: @note.updated_at, status: 200
+      render json: @note.updated_at.strftime("%F %T"), status: 200
     else
       render json: @note.errors, status: 422
     end
