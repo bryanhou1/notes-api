@@ -5,29 +5,24 @@ class UsersController < ApplicationController
 		render json: current_user
 	end
 
-	# def show
-	# 	@user = User.find(params[:id])
-	# 	render json: @user
-	# end
-
 	# def index
 	# 	@users = User.all
 	# 	render json: @users
 	# end
 
   def destroy
-    # @user = User.find(params[:id])
-    # @user.destroy
-    # render json: { head: :no_content }
+    @user = current_user
+    @user.destroy
+    render json: { head: :no_content }
   end
 
 	def update
-		# @user = User.find(params[:id])
-		# if @user.update(user_params)
-		# 	render json: @user, status: 200
-		# else
-		# 	render json: { errors: @user.errors.full_messages }, status: 422
-		# end
+    @user = current_user
+    if @user.update_attributes(user_params)
+      render json: { head: :no_content } , status: 204
+    else
+      render json: { errors: @user.errors.full_messages }, status: 422
+    end
 	end
 
 	def create

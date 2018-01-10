@@ -1,15 +1,9 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:update, :destroy]
   before_action :authenticate_user
-  # authorization needs to be built as well
 
   # GET /notes
   def index
-    # if params[:user_id]
-    #   @notes = Note.where(user_id: params[:user_id])
-    # else
-    #   @notes = Note.all
-    # end
     @notes = Note.where(user: current_user)
     render json: @notes, status: 200
   end
@@ -36,11 +30,10 @@ class NotesController < ApplicationController
 
   # DELETE /notes/1
   def destroy
-    if @note.user == current_user
-      @note.destroy
+    if @note.user == current_user && @note.destroy
+      render json: {head: :no_content}
     else
-
-      # render json: @note.errors, status: 422
+      render json: {head: :no_content}, status: 422
     end
   end
 
